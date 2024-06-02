@@ -1,0 +1,59 @@
+define
+
+# Attributes
+control_id sub attribute, value string;
+control_name sub attribute, value string;
+control_describe sub attribute, value string;
+control_guide sub attribute, value string;
+
+# Entities
+grc_matrix sub entity;
+regulations sub grc_matrix;
+operations sub grc_matrix;
+control sub grc_matrix,
+    owns control_id,
+    owns control_name,
+    owns control_describe,
+    owns control_guide;
+
+# Subtypes of Regulations
+eu sub regulations;
+uk sub regulations;
+us sub regulations;
+
+# Subtypes of Operations
+aicpa sub operations;
+csa sub operations;
+iso sub operations;
+nist sub operations;
+
+# Specific NIST Subtypes
+fedramp sub nist;
+nist800_53r5 sub nist;
+
+# Specific Entities
+eba sub eu;
+ecb sub eu;
+esma sub eu;
+esrb sub eu;
+fca sub uk;
+frc sub uk;
+pra sub uk;
+cftc sub us;
+fed sub us;
+fincen sub us;
+occ sub us;
+sec sub us;
+soc_2_2018 sub aicpa;
+ccm_4_0_10 sub csa;
+iso_27001 sub iso;
+iso_27002 sub iso;
+
+# Relationships
+has_control sub relation,
+    relates has_control_owner,
+    relates has_control;
+
+related_controls sub relation,
+    relates control_source,
+    relates control_target;

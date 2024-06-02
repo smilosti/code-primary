@@ -3,11 +3,21 @@
     "build": {
         "dockerfile": "Dockerfile"
     },
-    "ports": [
-        "1729:1729"
+    "forwardPorts": [
+        1729,
+        4104
     ],
-    "settings": {
-        "terminal.integrated.shell.linux": "/bin/bash"
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "terminal.integrated.shell.linux": "/bin/bash"
+            },
+            "extensions": [
+                "ms-azuretools.vscode-docker",
+                "redhat.vscode-yaml",
+                "ms-python.python"
+            ]
+        }
     },
     "postCreateCommand": "echo 'TypeDB container setup complete'",
     "remoteUser": "root"

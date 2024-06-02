@@ -24,8 +24,8 @@ RUN wget https://repo.typedb.com/public/public-release/raw/names/typedb-studio-l
     && chmod +x /opt/typedb-studio/typedb-studio-linux/typedb-studio \
     && ln -s /opt/typedb-studio/typedb-studio-linux/typedb-studio /usr/local/bin/typedb-studio
 
-# Expose TypeDB port
-EXPOSE 1729
+# Expose ports for TypeDB and TypeDB Studio
+EXPOSE 1729 4104
 
-# Start TypeDB server
-CMD ["typedb", "server"]
+# Start both TypeDB server and TypeDB Studio
+CMD ["sh", "-c", "typedb server & typedb-studio"]
