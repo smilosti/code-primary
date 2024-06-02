@@ -1,0 +1,14 @@
+{
+    "name": "TypeDB Dev Container",
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+    "ports": [
+        "1729:1729"
+    ],
+    "settings": {
+        "terminal.integrated.shell.linux": "/bin/bash"
+    },
+    "postCreateCommand": "echo 'TypeDB container setup complete'",
+    "remoteUser": "root"
+}
