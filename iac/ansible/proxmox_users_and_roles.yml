@@ -1,0 +1,70 @@
+---
+- name: Configure Proxmox Users and Roles
+  hosts: localhost
+  tasks:
+    - name: Create Terraform User
+      uri:
+        url: "https://172.20.20.11:8006/api2/json/access/users"
+        method: POST
+        body:
+          userid: "terraform-user@pve"
+          password: "your_password"
+        body_format: json
+        headers:
+          Content-Type: "application/json"
+        validate_certs: no
+      register: terraform_user_response
+
+    - name: Create Ansible User
+      uri:
+        url: "https://172.20.20.11:8006/api2/json/access/users"
+        method: POST
+        body:
+          userid: "ansible-user@pve"
+          password: "your_password"
+        body_format: json
+        headers:
+          Content-Type: "application/json"
+        validate_certs: no
+      register: ansible_user_response
+
+    - name: Create Custom Role
+      uri:
+        url: "https://172.20.20.11:8006/api2/json/access/roles"
+        method: POST
+        body:
+          roleid: "CustomRole"
+          privs: "VM.Config.Disk,VM.Config.HWType,VM.Config.Network,VM.Console,VM.Monitor,VM.PowerMgmt,VM.Snapshot,Datastore.AllocateSpace,Datastore.Audit"
+        body_format: json
+        headers:
+          Content-Type: "application/json"
+        validate_certs: no
+      register: custom_role_response
+
+    - name: Assign Role to Terraform User
+      uri:
+        url: "https://your-proxmox-url:8006/api2/json/access/acl"
+        method: POST
+        body:
+          path: "/"
+          users: "terraform-user@pve"
+          roles: "PVEAdmin"
+        body_format: json
+        headers:
+          Content-Type: "application/json"
+        validate_certs: no
+      register: terraform_acl_response
+
+    - name: Assign Role to Ansible User
+      uri:
+        url: "https://172.20.20.11:8006/api2/json/access/acl"
+        method: POST
+        body:
+          path: "/"
+          users: "ansible-user@pve"
+          roles: "CustomRole"
+        body_format: json
+        headers:
+          Content-Type: "application/json"
+        validate_certs: no
+      register: ansible_acl_response

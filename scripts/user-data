@@ -1,0 +1,18 @@
+#cloud-config
+users:
+  - name: ubuntu
+    ssh-authorized-keys:
+      - ecdsa-sha2-nistp521 AAAAE2VjZHNhLXNoYTItbmlzdHA1MjEAAAAIbmlzdHA1MjEAAACFBABJSydkOrqbOfUgUYGR8LOOen3ndqPre+wORRKAt7QQNAoa2YOE+2hb+xqTczLsT6JrZ+xqi9Yamm0OL9WCo52k7wC282CBs1vKDqQ/7yB13cndeiaTsudNWUyTEJj034PgLZhWnESOlCBAf2xHLsilU0jELclml0v3vwtqcnU3XXEL/Q== apex@r12
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+    shell: /bin/bash
+chpasswd:
+  expire: false
+  list:
+    - ubuntu:password
+hostname: ubuntu-cloud
+hostname: ubuntu-cloud
+mounts:
+  - [ "cephfs", "/mnt/shared", "ceph", "defaults", "0", "0" ]
+runcmd:
+  - mkdir -p /mnt/shared
+  - mount -a

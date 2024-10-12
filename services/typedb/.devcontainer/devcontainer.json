@@ -5,7 +5,8 @@
     },
     "forwardPorts": [
         1729,
-        4104
+        4104,
+        8888
     ],
     "customizations": {
         "vscode": {
@@ -15,7 +16,9 @@
             "extensions": [
                 "ms-azuretools.vscode-docker",
                 "redhat.vscode-yaml",
-                "ms-python.python"
+                "ms-python.python",
+                "ms-toolsai.jupyter",
+                "ms-toolsai.datawrangler"
             ]
         }
     },
