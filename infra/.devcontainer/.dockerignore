@@ -1,0 +1,16 @@
+# Ignore node_modules and dependencies
+**/node_modules
+**/.terraform
+
+# Ignore Terraform state files
+*.tfstate
+*.tfstate.backup
+
+# Ignore temporary and log files
+*.log
+*.tmp
+*.bak
+
+# Ignore build artifacts
+apps/**/dist/
+services/**/build/

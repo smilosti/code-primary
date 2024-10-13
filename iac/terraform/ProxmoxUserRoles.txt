@@ -1,5 +1,0 @@
-pveum role add IACProv -privs "Datastore.AllocateSpace Datastore.Audit Pool.Allocate Sys.Audit Sys.Console Sys.Modify VM.Allocate VM.Audit VM.Clone VM.Config.CDROM VM.Config.Cloudinit VM.Config.CPU VM.Config.Disk VM.Config.HWType VM.Config.Memory VM.Config.Network VM.Config.Options VM.Migrate VM.Monitor VM.PowerMgmt SDN.Use"
-pveum user add terraform-prov@pve --password terr@st@xi0
-pveum user add ansible-prov@pve --password ans@st@xi0
-pveum aclmod / -user terraform-prov@pve -role IACProv
-pveum aclmod / -user ansible-prov@pve -role IACProv

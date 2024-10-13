@@ -1,0 +1,28 @@
+{
+	"name": "IaC Development Container",
+	"build": {
+	  "dockerfile": "Dockerfile",
+	  "context": "."
+	},
+	"customizations": {
+	  "vscode": {
+		"extensions": [
+		  "HashiCorp.terraform",
+		  "ms-azuretools.vscode-helm",
+		  "ms-kubernetes-tools.vscode-kubernetes-tools",
+		  "redhat.vscode-yaml",
+		  "argoproj.argo-cd"
+		],
+		"settings": {
+		  "editor.formatOnSave": true
+		}
+	  }
+	},
+	"postCreateCommand": "bash .devcontainer/post-create.sh",
+	"remoteUser": "vscode",
+	"forwardPorts": [8080, 3000],
+	"mounts": [
+	  "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"
+	]
+  }
+  

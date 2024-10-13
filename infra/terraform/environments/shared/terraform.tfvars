@@ -1,0 +1,16 @@
+pm_api_url      = "https://172.20.20.11:8006/api2/json"
+pm_user         = "terraform-prov@pve"
+pm_password     = "terr@st@xi0"
+pm_tls_insecure = true
+vm_name         = "ubuntu-2204-cloudinit-template"
+vm_id           = 9311
+memory          = 4096
+cores           = 2
+sockets         = 2
+bridge          = "vmbr3020"
+storage         = "local-nvme-01"
+disk_image      = "/var/lib/vz/template/iso/jammy-server-cloudimg-amd64.img"
+disk_size       = "32G"
+efi_disk_size   = "32M"
+template_id     = 9000
+target_node     = "stax1"  # Replace with your actual node name
